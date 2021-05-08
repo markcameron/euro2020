@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+
+  app:
+    container_name: euro2020
+    image: hub.devfactory.ch/devfactory/docker-dev-images/php:8.0-laravel-dev-latest
+    networks:
+      - mysql
+    environment:
+      - DB_HOST=mysql
+      - DB_USERNAME=root
+      - DB_DATABASE=euro2020
+      - DB_PASSWORD=
+      - LOG_CHANNEL=errorlog
+    ports:
+      - 3003:8000
+    volumes:
+      - ./:/app
+
+networks:
+  mysql:
+    external: true
