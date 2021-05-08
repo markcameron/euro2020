@@ -24,9 +24,15 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
+        'nickname',
         'name',
         'email',
         'password',
+        'provider',
+        'provider_user_id',
+        'nickname',
+        'catchphrase',
+        'id_facebook',
     ];
 
     /**
@@ -39,6 +45,7 @@ class User extends Authenticatable
         'remember_token',
         'two_factor_recovery_codes',
         'two_factor_secret',
+        'id_facebook',
     ];
 
     /**
@@ -58,4 +65,39 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+
+    /**
+     * Find user using social provider's id
+     *
+     * @param string $provider Provider name as requested from oauth e.g. facebook
+     * @param string $id User id of social provider
+     *
+     * @return User
+     */
+    public static function findForPassportSocialite($provider, $id)
+    {
+        $account = SocialAccount::where('provider', $provider)->where('provider_user_id', $id)->first();
+        if ($account) {
+            if ($account->user) {
+                return $account->user;
+            }
+        }
+        return;
+    }
+
+    public function getFullNameAttribute()
+    {
+        return $this->first_name .' '. $this->last_name;
+    }
+
+    public function getInitialsAttribute()
+    {
+        return substr(ucfirst($this->first_name), 0, 1) . substr(ucfirst($this->last_name), 0, 1) ;
+    }
+
+    public function predictions()
+    {
+        return $this->hasMany('App\Models\Prediction');
+    }
 }

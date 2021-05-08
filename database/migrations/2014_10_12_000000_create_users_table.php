@@ -20,8 +20,7 @@ class CreateUsersTable extends Migration
             $table->boolean('is_admin')->default(false);
             $table->boolean('can_predict')->default(true);
             $table->string('nickname')->nullable()->default(null);
-            $table->string('last_name');
-            $table->string('first_name');
+            $table->string('name');
             $table->string('email')->unique();
             $table->integer('active')->default(0);
             $table->string('password')->nullable()->default(null);
@@ -30,7 +29,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->foreignId('current_team_id')->nullable();
             $table->text('profile_photo_path')->nullable();
-            $table->string('id_fb')->nullable();
+            $table->string('id_facebook')->nullable();
         });
     }
 
