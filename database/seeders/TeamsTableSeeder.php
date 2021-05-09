@@ -31,97 +31,97 @@ class TeamsTableSeeder extends Seeder
                 ],
                 [
                     'name' => 'Wales',
-                    'code' => 'uy',
+                    'code' => 'gb-wls',
                 ],
             ],
             'B' => [
                 [
                     'name' => 'Belgium',
-                    'code' => 'pt',
+                    'code' => 'be',
                 ],
                 [
                     'name' => 'Denmark',
-                    'code' => 'es',
+                    'code' => 'dk',
                 ],
                 [
                     'name' => 'Finland',
-                    'code' => 'ma',
+                    'code' => 'fi',
                 ],
                 [
                     'name' => 'Russia',
-                    'code' => 'ir',
+                    'code' => 'ru',
                 ],
             ],
             'C' => [
                 [
                     'name' => 'Austria',
-                    'code' => 'fr',
+                    'code' => 'at',
                 ],
                 [
                     'name' => 'Netherlands',
-                    'code' => 'au',
+                    'code' => 'nl',
                 ],
                 [
                     'name' => 'North Macedonia',
-                    'code' => 'pe',
+                    'code' => 'mk',
                 ],
                 [
                     'name' => 'Ukraine',
-                    'code' => 'dk',
+                    'code' => 'ua',
                 ],
             ],
             'D' => [
                 [
                     'name' => 'Croatia',
-                    'code' => 'ar',
-                ],
-                [
-                    'name' => 'Czech Republic',
-                    'code' => 'is',
-                ],
-                [
-                    'name' => 'England',
                     'code' => 'hr',
                 ],
                 [
+                    'name' => 'Czech Republic',
+                    'code' => 'cz',
+                ],
+                [
+                    'name' => 'England',
+                    'code' => 'gb-eng',
+                ],
+                [
                     'name' => 'Scotland',
-                    'code' => 'ng',
+                    'code' => 'gb-sct',
                 ],
             ],
             'E' => [
                 [
                     'name' => 'Poland',
-                    'code' => 'br',
+                    'code' => 'pl',
                 ],
                 [
                     'name' => 'Slovakia',
-                    'code' => 'ch',
+                    'code' => 'sk',
                 ],
                 [
                     'name' => 'Spain',
-                    'code' => 'cr',
+                    'code' => 'es',
                 ],
                 [
                     'name' => 'Sweden',
-                    'code' => 'rs',
+                    'code' => 'se',
                 ],
             ],
             'F' => [
                 [
                     'name' => 'France',
-                    'code' => 'de',
+                    'code' => 'fr',
                 ],
                 [
                     'name' => 'Germany',
-                    'code' => 'mx',
+                    'code' => 'de',
                 ],
                 [
                     'name' => 'Hungary',
-                    'code' => 'se',
+                    'code' => 'hu',
                 ],
                 [
                     'name' => 'Portugal',
-                    'code' => 'kr',
+                    'code' => 'pt',
                 ],
             ],
         ];
