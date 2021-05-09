@@ -18,17 +18,17 @@ use App\Models\Game;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('matches');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/matches', function () {
+    return view('matches');
+})->name('matches');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/match/{game}', function (Game $game) {
     return view('match')->with('match', $game);
 })->name('match');
 
-Route::get('/auth/redirect', [SocialLoginController::class, 'redirect']);
+Route::get('/auth/redirect', [SocialLoginController::class, 'redirect'])->name('facebook.login');
 
 Route::get('/auth/callback', [SocialLoginController::class, 'signinFacebook']);

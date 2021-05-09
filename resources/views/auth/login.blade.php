@@ -44,5 +44,14 @@
                 </x-jet-button>
             </div>
         </form>
+
+        <form method="GET" action="{{ route('facebook.login') }}">
+            <button
+                class="w-full bg-blue-800 hover:bg-blue-900 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline"
+                type="submit"
+            >
+                Login with Facebook
+            </button>
+        </form>
     </x-jet-authentication-card>
 </x-guest-layout>

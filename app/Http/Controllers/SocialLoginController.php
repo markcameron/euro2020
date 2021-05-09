@@ -26,7 +26,7 @@ class SocialLoginController extends Controller
 
             if ($userCol) {
                 Auth::login($userCol);
-                return redirect('/dashboard');
+                return redirect('/matches');
             } else {
                 $newUser = User::create([
                     'name' => $user->name,
@@ -37,7 +37,7 @@ class SocialLoginController extends Controller
 
                 Auth::login($newUser);
 
-                return redirect('/dashboard');
+                return redirect('/matches');
             }
         } catch (Exception $exception) {
             dd($exception->getMessage());
