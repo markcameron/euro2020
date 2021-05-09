@@ -5,6 +5,6 @@
         </h2>
     </x-slot>
 
-    <livewire:match-list />
+    <livewire:match-detail :match="$match" />
 
 </x-app-layout>
