@@ -25,7 +25,7 @@
             <header class="h-18 bg-euro-darkest">
                 @livewire('navigation-menu')
             </header>
-            <main class="mb-auto flex-grow bg-gradient-to-b from-euro-darkest to-euro-light">
+            <main class="overflow-y-auto mb-auto flex-grow bg-gradient-to-b from-euro-darkest to-euro-light">
                 <!-- Page Content -->
                 <main>
                     {{ $slot }}
