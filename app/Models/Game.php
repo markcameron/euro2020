@@ -6,8 +6,8 @@ class Game extends Model
 {
 
     protected $fillable = [
-    'score_home',
-    'score_away',
+        'score_home',
+        'score_away',
     ];
 
     protected $dates = ['date'];
@@ -45,5 +45,25 @@ class Game extends Model
     public function goalsAway()
     {
         return $this->hasMany('App\Models\Goal')->whereTeam('away');
+    }
+
+    public function goals()
+    {
+        return $this->hasMany('App\Models\Goal');
+    }
+
+    public function getScoreHomeAttribute()
+    {
+        return $this->goalsHome->count();
+    }
+
+    public function getScoreAwayAttribute()
+    {
+        return $this->goalsAway->count();
+    }
+
+    public function getShowPredictionsAttribute()
+    {
+        return $this->predictions->isNotEmpty();
     }
 }
