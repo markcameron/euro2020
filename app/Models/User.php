@@ -10,6 +10,8 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
+use App\Services\ScoreService;
+
 class User extends Authenticatable
 {
     use HasApiTokens;
@@ -99,5 +101,11 @@ class User extends Authenticatable
     public function predictions()
     {
         return $this->hasMany('App\Models\Prediction');
+    }
+
+    public function getScoreAttribute()
+    {
+        $scoreService = new ScoreService();
+        return $scoreService->getUserScore($this);
     }
 }

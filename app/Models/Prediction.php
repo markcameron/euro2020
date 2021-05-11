@@ -12,14 +12,14 @@ class Prediction extends Model
         'score_away',
     ];
 
-    public function match()
+    public function game()
     {
-        return $this->belongsTo('App\Models\Match');
+        return $this->belongsTo(Game::class);
     }
 
     public function user()
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo(User::class);
     }
 
     public function scopeUserPredictions($query)
@@ -30,5 +30,10 @@ class Prediction extends Model
     public function scopeForCurrentUser($query)
     {
         return $query->whereUserId(\Auth::user()->id);
+    }
+
+    public function hasNoScore()
+    {
+        return is_null($this->game->score_home) && is_null($this->game->score_away);
     }
 }

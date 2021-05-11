@@ -25,6 +25,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/matches', function () {
     return view('matches');
 })->name('matches');
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/leaderboard', function () {
+    return view('leaderboard');
+})->name('leaderboard');
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/match/{game}', function (Game $game) {
     return view('match')->with('match', $game);
 })->name('match');
