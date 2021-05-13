@@ -17,10 +17,14 @@ class Prediction extends Component
     public function decreaseScore($team): void
     {
         $this->match->matchPrediction->decreaseScore($team);
+
+        $this->match->refresh();
     }
 
     public function increaseScore($team): void
     {
         $this->match->matchPrediction->increaseScore($team);
+
+        $this->match->refresh();
     }
 }

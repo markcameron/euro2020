@@ -1,0 +1,14 @@
+.dockerignore
+.editorconfig
+.env*
+.git*
+.styleci.yml
+composer.phar
+node_modules/
+package-lock.json
+package.json
+phpunit.xml
+readme.md
+tests
+server.php
+webpack.mix.js

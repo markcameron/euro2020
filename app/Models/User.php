@@ -68,7 +68,6 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-
     /**
      * Find user using social provider's id
      *
