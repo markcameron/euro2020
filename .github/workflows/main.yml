@@ -20,7 +20,7 @@ jobs:
 
     # Install PHP Vendor packages
     - name: fake private key #Needed to fake key for composer
-      run: touch api/storage/oauth-private.key
+      run: touch storage/oauth-private.key
     - name: Copy ENV Laravel Configuration for CI
       run: php -r "file_exists('.env') || copy('.env.ci', '.env');"
     - name: Install Dependencies (PHP vendors)
