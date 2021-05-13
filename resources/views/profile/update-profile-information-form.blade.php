@@ -59,6 +59,20 @@
             <x-jet-input-error for="name" class="mt-2" />
         </div>
 
+        <!-- Name -->
+        <div class="col-span-6 sm:col-span-4">
+            <x-jet-label for="nickname" value="{{ __('Nickname') }}" />
+            <x-jet-input id="nickname" type="text" class="mt-1 block w-full" wire:model.defer="state.nickname" autocomplete="nickname" />
+            <x-jet-input-error for="nickname" class="mt-2" />
+        </div>
+
+        <!-- Catchphrase -->
+        <div class="col-span-6 sm:col-span-4">
+            <x-jet-label for="catchphrase" value="{{ __('Catchphrase') }}" />
+            <x-jet-input id="catchphrase" type="text" class="mt-1 block w-full" wire:model.defer="state.catchphrase" autocomplete="catchphrase" />
+            <x-jet-input-error for="catchphrase" class="mt-2" />
+        </div>
+
         <!-- Email -->
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="email" value="{{ __('Email') }}" />
