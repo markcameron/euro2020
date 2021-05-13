@@ -21,6 +21,14 @@ Route::get('/', function () {
     return redirect('matches');
 });
 
+Route::get('/data-deletion', function () {
+    return view('data_deletion');
+});
+
+Route::get('/privacy-policy', function () {
+    return view('privacy_policy');
+});
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/matches', function () {
     return view('matches');
 })->name('matches');
