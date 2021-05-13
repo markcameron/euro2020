@@ -34,7 +34,16 @@ class Game extends Model
 
     public function userPrediction()
     {
-        return $this->hasMany('App\Models\Prediction')->whereUserId(\Auth::user()->id);
+        return $this->hasOne('App\Models\Prediction')->whereUserId(\Auth::user()->id);
+    }
+
+    public function matchPrediction()
+    {
+        return $this->hasOne('App\Models\Prediction')->whereUserId(\Auth::user()->id)->withDefault([
+            'user_id' => \Auth::user()->id,
+            'score_home' => 0,
+            'score_away' => 0,
+        ]);
     }
 
     public function goalsHome()

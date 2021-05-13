@@ -25,6 +25,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/matches', function () {
     return view('matches');
 })->name('matches');
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/predictions', function () {
+    return view('predictions');
+})->name('predictions');
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/leaderboard', function () {
     return view('leaderboard');
 })->name('leaderboard');
