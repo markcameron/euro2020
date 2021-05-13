@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-guest-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Data Deletion') }}
@@ -12,4 +12,4 @@
         <p>Login, visit the edit profile page, and click on the delete account button.</p>
 
     </div>
-</x-app-layout>
+</x-guest-layout>
