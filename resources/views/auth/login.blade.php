@@ -39,19 +39,36 @@
                     </a>
                 @endif
 
-                <x-jet-button class="ml-4">
+                <x-jet-button class="ml-4 bg-euro-darkest hover:bg-euro-dark">
                     {{ __('Log in') }}
                 </x-jet-button>
             </div>
         </form>
 
-        <form method="GET" action="{{ route('facebook.login') }}">
-            <button
-                class="w-full bg-blue-800 hover:bg-blue-900 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline"
-                type="submit"
-            >
-                Login with Facebook
-            </button>
-        </form>
+        <div class="mt-4 border-t border-grey-200">
+
+            <div class="mt-4">
+                <form method="GET" action="{{ route('register') }}">
+                    <button
+                        class="w-full bg-euro-darkest hover:bg-euro-dark text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline"
+                        type="submit"
+                    >
+                        Signup
+                    </button>
+                </form>
+            </div>
+
+            <div class="mt-4">
+                <form method="GET" action="{{ route('facebook.login') }}">
+                    <button
+                        class="w-full bg-blue-800 hover:bg-blue-900 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline"
+                        type="submit"
+                    >
+                        Login with Facebook
+                    </button>
+                </form>
+            </div>
+
+        </div>
     </x-jet-authentication-card>
 </x-guest-layout>
