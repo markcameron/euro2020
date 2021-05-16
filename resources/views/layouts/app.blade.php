@@ -13,6 +13,8 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
+        <link rel="manifest" href="manifest.webmanifest">
+
         @livewireStyles
 
         <!-- Scripts -->
