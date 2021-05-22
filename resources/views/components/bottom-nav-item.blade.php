@@ -1,4 +1,4 @@
-<a href="{{ $route }}" class="{{ $classes }}">
+<button wire:click="selectTab({{ $tab }})" class="{{ $classes }}">
     {{ $slot }}
-    {{ $text }}
-</a>
+    <span class="font-bold">{{ $text }}</span>
+</button>

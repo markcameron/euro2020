@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class BottomNavItem extends Component
 {
 
-    public $route;
+    public $tab;
     public $text;
 
     public $classes;
@@ -18,15 +18,15 @@ class BottomNavItem extends Component
      *
      * @return void
      */
-    public function __construct(Request $request, $route, $text)
+    public function __construct(Request $request, $tab, $text, $selectedTab = 1)
     {
-        $this->route = route($route);
+        $this->tab = $tab;
         $this->text = $text;
 
-        if ($request->route()->getName() === $route) {
-            $this->classes = 'flex-1 uppercase text-xs text-white text-center py-4 px-6 block hover:text-blue-500 focus:outline-none text-euro-darkest border-t-2 font-medium border-euro-darkest';
+        if ($selectedTab == $this->tab) {
+            $this->classes = $selectedTab .' flex-1 uppercase text-xs text-white text-center py-4 px-6 block hover:text-euro-darkest focus:outline-none text-euro-darkest border-t-2 font-medium border-euro-darkest';
         } else {
-            $this->classes = 'flex-1 uppercase text-xs text-white text-center py-4 px-6 block hover:text-blue-500 focus:outline-none border-t border-white';
+            $this->classes = $selectedTab .' flex-1 uppercase text-xs text-white text-center py-4 px-6 block hover:text-euro-darkest focus:outline-none border-t border-white';
         }
     }
 
