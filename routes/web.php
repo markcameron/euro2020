@@ -21,6 +21,10 @@ Route::get('/', function () {
     return redirect('matches');
 });
 
+Route::get('/offline', function () {
+    return view('vendor.laravelpwa.offline');
+});
+
 Route::get('/data-deletion', function () {
     return view('data_deletion');
 });
