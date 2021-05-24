@@ -4,7 +4,7 @@
         @livewire('navigation-menu')
     </header>
 
-    <main class="overflow-y-auto mb-auto flex-grow bg-gradient-to-b from-euro-darkest to-euro-light">
+    <main class="overflow-y-auto mb-auto flex-grow bg-gradient-to-b from-euro-darkest to-euro-light" id="scrollable">
 
         <main>
             @if ($selectedTab === 1)
@@ -43,4 +43,34 @@
             </nav>
         </div>
     </footer>
+
+    <script>
+        // Remeber scroll position when navigating between match/prediction detail and list
+        let div = document.getElementById('scrollable')
+
+        document.addEventListener("DOMContentLoaded", () => {
+            Livewire.hook('element.updated', (el, component) => {
+                if (component.fingerprint.name === 'navigation-tabs') {
+                    localStorage.setItem("scroll-position", 0);
+                    div.scrollTop = 0
+                }
+
+                if (!['match-list'].includes(component.fingerprint.name)) {
+                    return
+                }
+
+                setTimeout(() => {
+                    if (el.clientHeight !== 0 && localStorage.getItem("scroll-position") != null) {
+                        div.scrollTop = parseInt(localStorage.getItem("scroll-position"));
+                    }
+                }, 250);
+            })
+        });
+
+        div.onscroll = function (e) {
+            if (div.scrollTop !== 0) {
+                localStorage.setItem("scroll-position", div.scrollTop);
+            }
+        }
+    </script>
 </div>
