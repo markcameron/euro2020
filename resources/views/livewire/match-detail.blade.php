@@ -12,12 +12,12 @@
             <div class="text-3xl text-gray-900 flex flex-row">
                 <div class="mr-4 flex items-center">@flag($match->teamHome->code, 'w-6')</div>
                 <div class="flex-grow">{{ $match->teamHome->name }}</div>
-                <div class="w-8">{{ $match->score_home ?? 0}}</div>
+                <div class="w-8">{{ $match->started ? $match->score_home : '' }}</div>
             </div>
             <div class="text-3xl text-gray-900 flex flex-row">
                 <div class="mr-4 flex items-center">@flag($match->teamAway->code, 'w-6')</div>
                 <div class="flex-grow">{{ $match->teamAway->name }}</div>
-                <div class="w-8">{{ $match->score_away ?? 0}}</div>
+                <div class="w-8">{{ $match->started ? $match->score_away : '' }}</div>
             </div>
             <p class="mt-2 text-gray-500 tracking-tighter uppercase text-sm">{{ $match->stadium->name }} - {{ $match->stadium->city }}</p>
         </div>
@@ -32,7 +32,7 @@
                 @endforeach
             </div>
         @endif
-        @if ($match->show_predictions)
+        @if ($match->started)
             <div class="border-t border-gray-300 rounded-b-lg">
                 @foreach ($match->predictions as $prediction)
                     <div class="flex items-center px-4 py-2 border-b border-gray-300 last:border-b-0">

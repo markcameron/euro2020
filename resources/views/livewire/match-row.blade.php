@@ -3,20 +3,20 @@
     <div class="flex flex-row">
         <div class="mr-4 flex items-center">@flag($match->teamHome->code, 'w-4')</div>
         <div class="flex-grow">{{ $match->teamHome->name }}</div>
-        @if (is_null($match->score_home))
-            <div class="w-16 uppercase text-center">{{ $match->date->format('D j') }}</div>
-        @else
+        @if ($match->started)
             <div class="w-4">{{ $match->score_home }}</div>
+        @else
+            <div class="w-16 uppercase text-center">{{ $match->date->format('D j') }}</div>
         @endif
     </div>
 
     <div class="flex flex-row">
         <div class="mr-4 flex items-center">@flag($match->teamAway->code, 'w-4')</div>
         <div class="flex-grow">{{ $match->teamAway->name }}</div>
-        @if (is_null($match->score_away))
-            <div class="w-16 text-center">{{ $match->date->format('H:i') }}</div>
-        @else
+        @if ($match->started)
             <div class="w-4">{{ $match->score_away }}</div>
+        @else
+            <div class="w-16 text-center">{{ $match->date->format('H:i') }}</div>
         @endif
     </div>
 

@@ -75,4 +75,9 @@ class Game extends Model
     {
         return $this->predictions->isNotEmpty();
     }
+
+    public function getStartedAttribute()
+    {
+        return $this->date->isBefore(now());
+    }
 }
