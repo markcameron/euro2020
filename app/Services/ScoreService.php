@@ -20,6 +20,10 @@ class ScoreService
 
     private function getPredictionPoints(Prediction $prediction): int
     {
+        if (!$prediction->game->started) {
+            return 0;
+        }
+
         if ($this->predictedCorrectScore($prediction)) {
             return self::POINTS_CORRECT_SCORE;
         }
