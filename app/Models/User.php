@@ -35,6 +35,9 @@ class User extends Authenticatable
         'nickname',
         'catchphrase',
         'id_facebook',
+        'avatar',
+        'color',
+        'background_color',
     ];
 
     /**

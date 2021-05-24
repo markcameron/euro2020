@@ -9,6 +9,7 @@ use Validator;
 use Auth;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Str;
+use App\Services\AvatarService;
 
 class SocialLoginController extends Controller
 {
@@ -32,7 +33,10 @@ class SocialLoginController extends Controller
                     'name' => $user->name,
                     'email' => $user->email,
                     'id_facebook' => $user->id,
-                    'password' => encrypt(Str::random(32))
+                    'password' => encrypt(Str::random(32)),
+                    'avatar' => AvatarService::icons()->random(),
+                    'color' => AvatarService::foregroundColors()->random(),
+                    'background_color' => AvatarService::backgroundColors()->random(),
                 ]);
 
                 Auth::login($newUser);

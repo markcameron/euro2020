@@ -22,14 +22,15 @@ class CreateUsersTable extends Migration
             $table->string('nickname')->nullable()->default(null);
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('avatar');
+            $table->string('background_color');
+            $table->string('color');
             $table->string('catchphrase')->nullable()->default(null);
             $table->integer('active')->default(0);
             $table->string('password')->nullable()->default(null);
             $table->rememberToken();
             $table->string('activation_code')->nullable()->default(null);
             $table->timestamp('email_verified_at')->nullable();
-            $table->foreignId('current_team_id')->nullable();
-            $table->text('profile_photo_path')->nullable();
             $table->string('id_facebook')->nullable();
         });
     }

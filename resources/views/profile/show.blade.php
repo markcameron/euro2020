@@ -11,6 +11,12 @@
                 @livewire('profile.update-profile-information-form')
             @endif
 
+            @if (Laravel\Fortify\Features::canUpdateProfileInformation())
+                <div class="mt-10 sm:mt-0">
+                    @livewire('profile-icon-select')
+                </div>
+            @endif
+
             @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updatePasswords()))
                 <div class="mt-10 sm:mt-0">
                     @livewire('profile.update-password-form')
