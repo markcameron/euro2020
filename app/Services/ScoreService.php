@@ -18,6 +18,23 @@ class ScoreService
         return $user->predictions->reduce(fn($carry, $prediction) => $carry + $this->getPredictionPoints($prediction), 0);
     }
 
+    public function getPredictionStatus(Prediction $prediction): string
+    {
+        if ($this->predictedCorrectScore($prediction)) {
+            return Prediction::EXACT_SCORE;
+        }
+
+        if ($this->predictedCorrectDifference($prediction)) {
+            return Prediction::GOAL_DIFFERENCE;
+        }
+
+        if ($this->predictedCorrectWinner($prediction)) {
+            return Prediction::WINNER;
+        }
+
+        return Prediction::LOSER;
+    }
+
     private function getPredictionPoints(Prediction $prediction): int
     {
         if (!$prediction->game->started) {

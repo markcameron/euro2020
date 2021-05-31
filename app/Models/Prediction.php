@@ -2,8 +2,15 @@
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Services\ScoreService;
+
 class Prediction extends Model
 {
+
+    public const EXACT_SCORE = 'exact_score';
+    public const GOAL_DIFFERENCE = 'goal_difference';
+    public const WINNER = 'winner';
+    public const LOSER = 'loser';
 
     protected $fillable = [
         'user_id',
@@ -55,5 +62,11 @@ class Prediction extends Model
 
         $this->{'score_'. $team}++;
         $this->save();
+    }
+
+    public function getPredictionStatus(): string
+    {
+        $scoreService = new ScoreService();
+        return $scoreService->getPredictionStatus($this);
     }
 }
