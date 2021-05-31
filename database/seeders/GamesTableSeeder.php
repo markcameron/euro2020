@@ -236,7 +236,7 @@ class GamesTableSeeder extends Seeder
                 'home_team_id' => $teams->where('name', 'Croatia')->first()->id,
                 'away_team_id' => $teams->where('name', 'Scotland')->first()->id,
                 'stadium_id' => $stadiums->where('city', 'Glasgow')->first()->id,
-                'date' => Carbon::create(2021, 6, 2, 18, 0, 0, $timezone)->toDateTimeString(),
+                'date' => Carbon::create(2021, 6, 22, 18, 0, 0, $timezone)->toDateTimeString(),
             ],
 
             // 21st June
