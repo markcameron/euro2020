@@ -15,9 +15,9 @@
         </div>
 
         <h3 class="font-bold mt-8">Background Color</h3>
-        <div class="flex">
+        <div class="flex justify-between">
             @foreach ($backgroundColors as $color)
-                <div wire:click="setBackgroundColor('{{ $color }}')" class="flex-1 p-1">
+                <div wire:click="setBackgroundColor('{{ $color }}')" class="py-1">
                     <div class="inline-block rounded-full p-1 border-2 {{ $selectedBackgroundColor === 'white' && $color === 'white' ? 'gray-700' : ($selectedBackgroundColor === $color ? 'border-'. $color : 'border-white') }}">
                         <div class="rounded-full bg-{{ $color }} w-6 h-6 {{ $color === 'white' ? 'border border-gray-700' : '' }}"></div>
                     </div>
@@ -26,9 +26,9 @@
         </div>
 
         <h3 class="font-bold">Foreground Color</h3>
-        <div class="flex">
+        <div class="flex justify-between">
             @foreach ($foregroundColors as $color)
-                <div wire:click="setForegroundColor('{{ $color }}')" class="flex-1 p-1">
+                <div wire:click="setForegroundColor('{{ $color }}')" class="py-1">
                     <div class="inline-block rounded-full p-1 border-2 {{ $selectedForegroundColor === $color ? 'border-'. $color : 'border-white' }}">
                         <div class="rounded-full bg-{{ $color }} w-6 h-6"></div>
                     </div>
