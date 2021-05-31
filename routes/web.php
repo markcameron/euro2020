@@ -33,6 +33,10 @@ Route::get('/privacy-policy', function () {
     return view('privacy_policy');
 });
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/rules', function () {
+    return view('rules');
+})->name('rules');
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/matches', function () {
     return view('matches');
 })->name('matches');

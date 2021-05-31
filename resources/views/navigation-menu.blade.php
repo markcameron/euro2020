@@ -162,6 +162,10 @@
                     {{ __('Profile') }}
                 </x-jet-responsive-nav-link>
 
+                <x-jet-responsive-nav-link href="{{ route('rules') }}" :active="request()->routeIs('rules')">
+                    {{ __('Rules') }}
+                </x-jet-responsive-nav-link>
+
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
