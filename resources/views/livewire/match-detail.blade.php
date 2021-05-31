@@ -32,7 +32,7 @@
                 @endforeach
             </div>
         @endif
-        @if (!$match->started)
+        @if ($match->started)
             <div class="border-t border-gray-300 rounded-b-lg">
                 @foreach ($match->predictions as $prediction)
                     <div class="flex items-center px-2 py-2 border-b border-gray-300 last:border-b-0">
