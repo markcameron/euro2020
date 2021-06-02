@@ -11,31 +11,23 @@
             <div class="text-3xl text-gray-900 flex flex-row">
                 <div class="mr-4 flex items-center">@flag($match->teamHome->code, 'w-6')</div>
                 <div class="flex-grow">{{ $match->teamHome->name }}</div>
-                <div class="w-8 flex items-center text-euro-darkest" wire:click="decreaseScore('home')">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18 12H6" />
-                    </svg>
+                <div class="w-8 flex items-center" wire:click="decreaseScore('home')">
+                    <x-icon name="heroicon-o-minus-sm" class="text-euro-darkest w-7 h-7"></x-icon>
                 </div>
                 <div class="w-8 flex items-center justify-center">{{ $match->userPrediction->score_home ?? 0}}</div>
-                <div class="w-8 flex items-center text-euro-darkest" wire:click="increaseScore('home')">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                    </svg>
+                <div class="w-8 flex items-center" wire:click="increaseScore('home')">
+                    <x-icon name="heroicon-o-plus-sm" class="text-euro-darkest"></x-icon>
                 </div>
             </div>
             <div class="text-3xl text-gray-900 flex flex-row">
                 <div class="mr-4 flex items-center">@flag($match->teamAway->code, 'w-6')</div>
                 <div class="flex-grow">{{ $match->teamAway->name }}</div>
-                <div class="w-8 flex items-center text-euro-darkest" wire:click="decreaseScore('away')">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18 12H6" />
-                    </svg>
+                <div class="w-8 flex items-center" wire:click="decreaseScore('away')">
+                    <x-icon name="heroicon-o-minus-sm" class="text-euro-darkest w-7 h-7"></x-icon>
                 </div>
                 <div class="w-8 flex items-center justify-center"><span>{{ $match->userPrediction->score_away ?? 0}}</span></div>
-                <div class="w-8 flex items-center text-euro-darkest" wire:click="increaseScore('away')">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                    </svg>
+                <div class="w-8 flex items-center" wire:click="increaseScore('away')">
+                    <x-icon name="heroicon-o-plus-sm" class="text-euro-darkest"></x-icon>
                 </div>
             </div>
             <p class="mt-2 text-gray-500 tracking-tighter uppercase text-sm">{{ $match->stadium->name }} - {{ $match->stadium->city }}</p>
