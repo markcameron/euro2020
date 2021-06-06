@@ -62,7 +62,7 @@
                     div.scrollTop = 0
                 }
 
-                if (!['match-list'].includes(component.fingerprint.name)) {
+                if (!['match-list', 'predictions-list'].includes(component.fingerprint.name)) {
                     return
                 }
 
