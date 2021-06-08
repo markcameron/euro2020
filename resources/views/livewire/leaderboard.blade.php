@@ -4,7 +4,7 @@
         @foreach ($users as $position => $user)
             <div class="py-4 pr-4 flex items-center py-2 border-b border-gray-300 last:border-b-0">
                 <div class="w-8 mx-1 font-bold text-grey-900 text-2xl text-center">{{ $position + 1 }}</div>
-                <div class="mr-2 bg-{{ $user->background_color }} w-10 h-10 rounded-full flex items-center justify-center">
+                <div class="mr-2 bg-{{ $user->background_color }} w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center">
                     <x-icon name="{{ $user->avatar }}" class="text-{{ $user->color }} w-7 h-7"></x-icon>
                 </div>
                 <div class="flex-grow">

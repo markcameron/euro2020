@@ -35,9 +35,9 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             $this->updateVerifiedUser($user, $input);
         } else {
             $user->forceFill([
-                'name' => $input['name'],
-                'nickname' => $input['nickname'],
-                'catchphrase' => $input['catchphrase'],
+                'name' => trim($input['name']),
+                'nickname' => $this->trimNull($input['nickname']),
+                'catchphrase' => $this->trimNull($input['catchphrase']),
                 'email' => $input['email'],
             ])->save();
         }
@@ -59,5 +59,12 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
         ])->save();
 
         $user->sendEmailVerificationNotification();
+    }
+
+    private function trimNull(string $string): string|null
+    {
+        return trim($string) === ''
+            ? null
+            : trim($string);
     }
 }
