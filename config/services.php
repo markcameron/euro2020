@@ -36,4 +36,7 @@ return [
         'redirect' => env('FACEBOOK_REDIRECT_URI')
     ],
 
+    'football_data_api' => [
+        'auth_token' => env('FOOTBALL_DATA_API_AUTH_TOKEN'),
+    ],
 ];

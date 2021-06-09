@@ -2,14 +2,16 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Team extends Model {
+class Team extends Model
+{
 
-  protected $fillable = [
-    'name',
-  ];
+    protected $fillable = [
+      'name',
+      'football_data_team_id',
+    ];
 
-  protected function group() {
-    return $this->belongsTo('App\Models\Group');
-  }
-
+    protected function group()
+    {
+        return $this->belongsTo('App\Models\Group');
+    }
 }
