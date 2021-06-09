@@ -96,13 +96,13 @@ class GamesTableSeeder extends Seeder
                 'home_team_id' => $teams->where('name', 'Hungary')->first()->id,
                 'away_team_id' => $teams->where('name', 'Portugal')->first()->id,
                 'stadium_id' => $stadiums->where('city', 'Budapest')->first()->id,
-                'date' => Carbon::create(2021, 6, 15, 15, 0, 0, $timezone)->toDateTimeString(),
+                'date' => Carbon::create(2021, 6, 15, 18, 0, 0, $timezone)->toDateTimeString(),
             ],
             [
                 'home_team_id' => $teams->where('name', 'France')->first()->id,
                 'away_team_id' => $teams->where('name', 'Germany')->first()->id,
                 'stadium_id' => $stadiums->where('city', 'Munich')->first()->id,
-                'date' => Carbon::create(2021, 6, 15, 18, 0, 0, $timezone)->toDateTimeString(),
+                'date' => Carbon::create(2021, 6, 15, 21, 0, 0, $timezone)->toDateTimeString(),
             ],
 
             // 16th June
@@ -230,13 +230,13 @@ class GamesTableSeeder extends Seeder
                 'home_team_id' => $teams->where('name', 'Czech Republic')->first()->id,
                 'away_team_id' => $teams->where('name', 'England')->first()->id,
                 'stadium_id' => $stadiums->where('city', 'London')->first()->id,
-                'date' => Carbon::create(2021, 6, 22, 18, 0, 0, $timezone)->toDateTimeString(),
+                'date' => Carbon::create(2021, 6, 22, 21, 0, 0, $timezone)->toDateTimeString(),
             ],
             [
                 'home_team_id' => $teams->where('name', 'Croatia')->first()->id,
                 'away_team_id' => $teams->where('name', 'Scotland')->first()->id,
                 'stadium_id' => $stadiums->where('city', 'Glasgow')->first()->id,
-                'date' => Carbon::create(2021, 6, 22, 18, 0, 0, $timezone)->toDateTimeString(),
+                'date' => Carbon::create(2021, 6, 22, 21, 0, 0, $timezone)->toDateTimeString(),
             ],
 
             // 21st June
