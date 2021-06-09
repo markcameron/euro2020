@@ -8,6 +8,7 @@ class Game extends Model
     protected $fillable = [
         'score_home',
         'score_away',
+        'football_data_match_id',
     ];
 
     protected $dates = ['date'];

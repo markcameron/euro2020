@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddFootballDataTeamIdToTeamsTable extends Migration
+class AddFootballDataMatchIdToGamesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddFootballDataTeamIdToTeamsTable extends Migration
      */
     public function up()
     {
-        Schema::table('teams', function (Blueprint $table) {
-            $table->integer('football_data_team_id')->nullable()->after('id');
+        Schema::table('games', function (Blueprint $table) {
+            $table->integer('football_data_match_id')->nullable()->after('id');
         });
     }
 
@@ -25,8 +25,8 @@ class AddFootballDataTeamIdToTeamsTable extends Migration
      */
     public function down()
     {
-        Schema::table('teams', function (Blueprint $table) {
-            $table->dropColumn('football_data_team_id');
+        Schema::table('games', function (Blueprint $table) {
+            $table->dropColumn('football_data_match_id');
         });
     }
 }

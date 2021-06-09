@@ -53,6 +53,7 @@ class FetchTeamId extends Command
                 $local_team->update(['football_data_team_id' => $team['id']]);
             }
         });
+
         return 0;
     }
 }
