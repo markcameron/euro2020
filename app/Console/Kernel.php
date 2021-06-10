@@ -24,7 +24,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->command('fd:goals')->everyMinute();
+
+        $schedule->command('euro:lock-predictions')->yearlyOn(6, 11, '21:00');
     }
 
     /**
