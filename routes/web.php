@@ -3,8 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 use App\Http\Controllers\SocialLoginController;
+use Illuminate\Http\Request;
 
 use App\Models\Game;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,3 +62,15 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/match/{game}', function (
 Route::get('/auth/redirect', [SocialLoginController::class, 'redirect'])->name('facebook.login');
 
 Route::get('/auth/callback', [SocialLoginController::class, 'signinFacebook']);
+
+Route::get('/lazy', function (Request $request) {
+    if (!in_array($request->user()->id, ['1'])) {
+        abort(404);
+    }
+
+    $users = User::get();
+
+    $users->each(function ($user) {
+        echo $user->name .' | '. $user->predictions->count() .'<br>';
+    });
+});
