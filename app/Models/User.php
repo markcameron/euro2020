@@ -110,4 +110,9 @@ class User extends Authenticatable
         $scoreService = new ScoreService();
         return $scoreService->getUserScore($this);
     }
+
+    public function canPredictGame(Game $game): bool
+    {
+        return $this->can_predict && $game->can_predict;
+    }
 }
