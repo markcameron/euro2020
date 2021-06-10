@@ -17,7 +17,7 @@ class PredictionsList extends Component
 
     public function render()
     {
-        $this->matches = Game::get();
+        $this->matches = Game::with(['teamHome', 'teamAway', 'goalsHome', 'goalsAway', 'userPrediction'])->get();
 
         return view('livewire.predictions-list');
     }

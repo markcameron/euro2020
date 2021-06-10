@@ -17,7 +17,7 @@ class MatchList extends Component
 
     public function render()
     {
-        $this->matches = Game::get();
+        $this->matches = Game::with(['teamHome', 'teamAway', 'goalsHome', 'goalsAway'])->get();
 
         return view('livewire.match-list');
     }
