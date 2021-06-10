@@ -61,7 +61,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
         $user->sendEmailVerificationNotification();
     }
 
-    private function trimNull(string $string): string|null
+    private function trimNull(?string $string): string|null
     {
         return trim($string) === ''
             ? null
