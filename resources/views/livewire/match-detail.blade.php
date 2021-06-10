@@ -36,17 +36,16 @@
             <div class="border-t border-gray-300 rounded-b-lg">
                 @foreach ($match->predictions as $prediction)
                     <div class="flex items-center px-2 py-2 border-b border-gray-300 last:border-b-0">
-                        <div class="mr-2 bg-{{ $prediction->user->background_color }} w-10 h-10 rounded-full flex items-center justify-center">
+                        <div class="mr-2 bg-{{ $prediction->user->background_color }} w-10 h-10 flex-shrink-0 rounded-full flex items-center justify-center">
                             <x-icon name="{{ $prediction->user->avatar }}" class="text-{{ $prediction->user->color }} w-7 h-7"></x-icon>
                         </div>
                         <div class="flex-grow">
                             <p class="font-bold text-gray-900">{{ $prediction->user->name }}</p>
-                            <p class="text-sm text-gray-700">{{ $prediction->user->catchphrase }}</p>
                         </div>
-                        <div class="w-14 text-2xl font-bold">
+                        <div class="w-14 flex-shrink-0 text-2xl font-bold">
                             {{ $prediction->score_home }} - {{ $prediction->score_away }}
                         </div>
-                        <div class="bg-cover bg-center w-8 h-8 rounded-full ml-2">
+                        <div class="bg-cover bg-center w-8 h-8 flex-shrink-0 rounded-full ml-2">
                             <x-prediction-icon :prediction="$prediction" />
                         </div>
                     </div>
