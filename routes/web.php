@@ -63,14 +63,6 @@ Route::get('/auth/redirect', [SocialLoginController::class, 'redirect'])->name('
 
 Route::get('/auth/callback', [SocialLoginController::class, 'signinFacebook']);
 
-Route::get('/lazy', function (Request $request) {
-    if (!in_array($request->user()->id, ['1'])) {
-        abort(404);
-    }
-
-    $users = User::get();
-
-    $users->each(function ($user) {
-        echo $user->name .' | '. $user->predictions->count() .'<br>';
-    });
+Route::middleware(['auth', 'role:admin|hotline'])->get('/lazy', function (Request $request) {
+    return view('lazy');
 });
