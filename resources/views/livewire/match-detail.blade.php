@@ -34,20 +34,26 @@
         @endif
         @if ($match->started)
             <div class="border-t border-gray-300 rounded-b-lg">
-                @foreach ($match->predictions as $prediction)
+                @foreach ($users as $user)
                     <div class="flex items-center px-2 py-2 border-b border-gray-300 last:border-b-0">
-                        <div class="mr-2 bg-{{ $prediction->user->background_color }} w-10 h-10 flex-shrink-0 rounded-full flex items-center justify-center">
-                            <x-icon name="{{ $prediction->user->avatar }}" class="text-{{ $prediction->user->color }} w-7 h-7"></x-icon>
+                        <div class="mr-2 bg-{{ $user->background_color }} w-10 h-10 flex-shrink-0 rounded-full flex items-center justify-center">
+                            <x-icon name="{{ $user->avatar }}" class="text-{{ $user->color }} w-7 h-7"></x-icon>
                         </div>
                         <div class="flex-grow">
-                            <p class="font-bold text-gray-900">{{ $prediction->user->name }}</p>
+                            <p class="font-bold text-gray-900">{{ $user->name }}</p>
                         </div>
-                        <div class="w-14 flex-shrink-0 text-2xl font-bold">
-                            {{ $prediction->score_home }} - {{ $prediction->score_away }}
-                        </div>
-                        <div class="bg-cover bg-center w-8 h-8 flex-shrink-0 rounded-full ml-2">
-                            <x-prediction-icon :prediction="$prediction" />
-                        </div>
+                        @if ($user->prediction($match))
+                            <div class="w-14 flex-shrink-0 text-2xl font-bold">
+                                {{ $user->prediction($match)?->score_home }} - {{ $user->prediction($match)?->score_away }}
+                            </div>
+                            <div class="bg-cover bg-center w-8 h-8 flex-shrink-0 rounded-full ml-2">
+                                <x-prediction-icon :prediction="$user->prediction($match)" />
+                            </div>
+                        @else
+                            <div class="w-24 flex justify-center">
+                                <span class="bg-red-500 text-white font-bold px-2 py-1 rounded-lg">FAIL</span>
+                            </div>
+                        @endif
                     </div>
                 @endforeach
             </div>
