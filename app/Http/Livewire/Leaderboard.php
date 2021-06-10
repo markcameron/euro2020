@@ -26,7 +26,7 @@ class Leaderboard extends Component
      */
     private function generateLeaderboard()
     {
-        $users = User::get();
+        $users = User::with(['predictions.game.goalsHome', 'predictions.game.goalsAway'])->get();
 
         $this->users = $users->sortByDesc('score');
     }
