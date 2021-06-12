@@ -24,7 +24,7 @@
         @if ($match->goals->isNotEmpty())
             <div class="border-t py-2 bg-gray-100 border-gray-300">
                 @foreach ($match->goals as $goal)
-                    <div class="px-4 py-1 border-b border-gray-200 last:border-b-0 flex flex-row">
+                    <div class="px-2 py-1 border-b border-gray-200 last:border-b-0 flex flex-row">
                         <div class="flex-1 font-bold">{{ $goal->team === 'home' ? $goal->scored_by : '' }}</div>
                         <div class="w-10 text-center font-bold">{{ $goal->minute }}'</div>
                         <div class="flex-1 font-bold text-right">{{ $goal->team === 'away' ? $goal->scored_by : '' }}</div>
