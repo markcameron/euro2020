@@ -64,6 +64,8 @@ class Game extends Model
 
     public function getScoreHomeAttribute()
     {
+        return $this->goalsHome->count();
+
         static $score = [];
 
         if (isset($score[$this->id])) {
@@ -77,6 +79,8 @@ class Game extends Model
 
     public function getScoreAwayAttribute()
     {
+        return $this->goalsAway->count();
+
         static $score = [];
 
         if (isset($score[$this->id])) {
