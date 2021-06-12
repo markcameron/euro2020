@@ -65,31 +65,11 @@ class Game extends Model
     public function getScoreHomeAttribute()
     {
         return $this->goalsHome->count();
-
-        static $score = [];
-
-        if (isset($score[$this->id])) {
-            return $score[$this->id];
-        }
-
-        $score[$this->id] = $this->goalsHome->count();
-
-        return $score[$this->id];
     }
 
     public function getScoreAwayAttribute()
     {
         return $this->goalsAway->count();
-
-        static $score = [];
-
-        if (isset($score[$this->id])) {
-            return $score[$this->id];
-        }
-
-        $score[$this->id] = $this->goalsAway->count();
-
-        return $score[$this->id];
     }
 
     public function getShowPredictionsAttribute()

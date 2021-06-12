@@ -107,15 +107,7 @@ class User extends Authenticatable
 
     public function prediction(Game $game)
     {
-        static $predictions = [];
-
-        if (isset($predictions[$this->id][$game->id])) {
-            return $predictions[$this->id][$game->id];
-        }
-
-        $predictions[$this->id][$game->id] =$this->predictions()->where('game_id', $game->id)->first();
-
-        return $predictions[$this->id][$game->id];
+        return $this->predictions()->where('game_id', $game->id)->first();
     }
 
     public function getScoreAttribute()
