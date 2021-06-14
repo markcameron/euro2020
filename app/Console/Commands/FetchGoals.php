@@ -45,10 +45,7 @@ class FetchGoals extends Command
     {
         $games = $this->getLiveGames();
 
-        $games->each(function ($game) {
-            $match = $this->getLiveMatchData($game);
-            $this->updateGoals($game, $match['match']['goals']);
-        });
+        $games->each(fn ($game) => $this->updateGoals($game, $this->getLiveMatchGoals($game)));
 
         return 0;
     }
@@ -58,13 +55,15 @@ class FetchGoals extends Command
         return Game::whereBetween('date', [now()->sub('150 minutes'), now()])->get();
     }
 
-    private function getLiveMatchData(Game $game): array
+    private function getLiveMatchGoals(Game $game): array
     {
         $response = Http::withHeaders([
             'X-Auth-Token' => config('services.football_data_api.auth_token'),
         ])->get('http://api.football-data.org/v2/matches/'. $game->football_data_match_id);
 
-        return $response->json();
+        $match = $response->json();
+
+        return $match['match']['goals'];
     }
 
     private function updateGoals(Game $game, array $goals): void
