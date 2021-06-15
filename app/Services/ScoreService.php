@@ -18,8 +18,17 @@ class ScoreService
         return $user->predictions->reduce(fn($carry, $prediction) => $carry + $this->getPredictionPoints($prediction), 0);
     }
 
-    public function getPredictionStatus(Prediction $prediction): string
+    public function getUserStats(User $user)
     {
+        return $user->predictions->mapToGroups(fn($prediction) => [$this->getPredictionStatus($prediction) => 1])->filter();
+    }
+
+    public function getPredictionStatus(Prediction $prediction): ?string
+    {
+        if (!$prediction->game->started) {
+            return null;
+        }
+
         if ($this->predictedCorrectScore($prediction)) {
             return Prediction::EXACT_SCORE;
         }

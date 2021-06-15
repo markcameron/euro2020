@@ -11,6 +11,7 @@ class Leaderboard extends Component
 {
 
     public $users;
+    public $showStats = false;
 
     public function render()
     {
