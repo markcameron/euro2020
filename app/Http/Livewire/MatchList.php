@@ -9,6 +9,7 @@ class MatchList extends Component
 {
 
     public $matches;
+    public $todaysMatches;
 
     public $showMatchDetail = false;
     public $game;
@@ -18,6 +19,7 @@ class MatchList extends Component
     public function render()
     {
         $this->matches = Game::with(['teamHome', 'teamAway', 'goalsHome', 'goalsAway'])->get();
+        $this->todaysMatches = $this->matches->whereBetween('date', [now()->startOfDay(), now()->endOfDay()]);
 
         return view('livewire.match-list');
     }
