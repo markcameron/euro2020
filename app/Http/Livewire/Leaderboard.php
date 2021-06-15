@@ -29,6 +29,6 @@ class Leaderboard extends Component
     {
         $users = User::with(['predictions.game.goalsHome', 'predictions.game.goalsAway'])->get();
 
-        $this->users = $users->sortByDesc('score');
+        $this->users = $users->sortByDesc('leaderboard_sort');
     }
 }

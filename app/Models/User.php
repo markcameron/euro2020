@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Str;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
@@ -120,6 +121,19 @@ class User extends Authenticatable
     {
         $scoreService = new ScoreService();
         return $scoreService->getUserStats($this);
+    }
+
+    public function getLeaderboardSortAttribute()
+    {
+        $stats = $this->prediction_stats;
+
+        return collect([
+            Str::padLeft($this->score, 3, '0'),
+            Str::padLeft(($stats->get(\App\Models\Prediction::EXACT_SCORE)?->count() ?? 0), 2, '0'),
+            Str::padLeft(($stats->get(\App\Models\Prediction::GOAL_DIFFERENCE)?->count() ?? 0), 2, '0'),
+            Str::padLeft(($stats->get(\App\Models\Prediction::WINNER)?->count() ?? 0), 2, '0'),
+            Str::padLeft(($stats->get(\App\Models\Prediction::LOSER)?->count() ?? 0), 2, '0'),
+        ])->join('');
     }
 
     public function canPredictGame(Game $game): bool
