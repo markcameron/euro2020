@@ -12,6 +12,16 @@
             <livewire:prediction :match="$match" />
         @else
 
+            @if ($todaysMatches)
+                <div class="mb-6">
+                    <div class="mb-2 font-bold font-xl text-white">Today</div>
+                    @foreach ($todaysMatches->whereBetween('date', [now()->startOfDay(), now()->endOfDay()]) as $match)
+                        <livewire:prediction-row :match="$match"/>
+                    @endforeach
+                </div>
+            @endif
+
+            <div class="mb-2 font-bold font-xl text-white">Group stage</div>
             @foreach ($matches as $match)
                 <livewire:prediction-row :match="$match"/>
             @endforeach

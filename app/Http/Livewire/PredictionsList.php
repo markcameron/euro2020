@@ -9,6 +9,7 @@ class PredictionsList extends Component
 {
 
     public $matches;
+    public $todaysMatches;
     public $match;
 
     public $showPredictionForm = false;
@@ -18,6 +19,7 @@ class PredictionsList extends Component
     public function render()
     {
         $this->matches = Game::with(['teamHome', 'teamAway', 'goalsHome', 'goalsAway', 'userPrediction'])->get();
+        $this->todaysMatches = $this->matches->whereBetween('date', [now()->startOfDay(), now()->endOfDay()]);
 
         return view('livewire.predictions-list');
     }
