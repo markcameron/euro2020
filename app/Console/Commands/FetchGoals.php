@@ -70,11 +70,11 @@ class FetchGoals extends Command
     {
         $goals = collect($goals);
 
+        $game->goals()->delete();
+
         if ($goals->isEmpty()) {
             return;
         }
-
-        $game->goals()->delete();
 
         $goals->each(fn($goal) => $game->goals()->create([
             'minute' => $goal['minute'],
