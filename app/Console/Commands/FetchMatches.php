@@ -7,8 +7,9 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Collection;
 
 use App\Models\Game;
-use App\Models\Team;
 use App\Models\Stadium;
+use App\Models\Team;
+use App\Models\User;
 use Carbon\Carbon;
 
 class FetchMatches extends Command
@@ -44,6 +45,7 @@ class FetchMatches extends Command
      */
     public function handle()
     {
+        User::where('can_predict', false)->update(['can_predict' => true]);
         Game::whereIn('stage', ['GROUP_STAGE'])->update(['can_predict' => false]);
 
         $matches = $this->getMatches();
