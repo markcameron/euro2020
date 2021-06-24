@@ -116,4 +116,4 @@ ENTRYPOINT []
 
 EXPOSE 8080
 
-CMD ["rr", "serve", "-c", "./.rr.yaml"]
+CMD ["./cmd.sh"]
