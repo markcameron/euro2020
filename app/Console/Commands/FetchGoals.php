@@ -45,6 +45,7 @@ class FetchGoals extends Command
     {
         $games = $this->getLiveGames();
 
+        $games->each(fn ($game) => $this->removeAbilityToPredict($game));
         $games->each(fn ($game) => $this->updateGoals($game, $this->getLiveMatchGoals($game)));
 
         return 0;
@@ -81,5 +82,12 @@ class FetchGoals extends Command
             'scored_by' => $goal['scorer']['name'],
             'team' => $goal['team']['id'] === $game->teamHome->football_data_team_id ? 'home' : 'away',
         ]));
+    }
+
+    private function removeAbilityToPredict(Game $game): void
+    {
+        if ($game->started && $game->can_predict) {
+            $game->update(['can_predict' => false]);
+        }
     }
 }
