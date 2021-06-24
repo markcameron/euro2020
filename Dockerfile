@@ -100,6 +100,7 @@ COPY --chown=appuser:appuser ./composer.* /app/
 # copy application sources into image (completely)
 COPY --chown=appuser:appuser . /app/
 
+RUN chmod -R 777 cmd.sh
 #    # copy front-end artifacts into image
 #    COPY --from=frontend --chown=appuser:appuser /app/public /app/public
 
