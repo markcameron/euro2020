@@ -51,6 +51,7 @@ class FetchMatches extends Command
         $matches = $this->getMatches();
 
         $matches->where('stage', 'LAST_16')->each($this->insertMatch());
+        $matches->where('stage', 'QUARTER_FINAL')->each($this->insertMatch());
 
         return 0;
     }
@@ -103,6 +104,10 @@ class FetchMatches extends Command
             'Parken' => 'Parken Stadium',
             'Arena Nationala' => 'Arena Națională',
             'Hampden Park' => 'Hampden Park',
+            'Saint Petersburg Stadium' => 'Krestovsky Stadium',
+            'Fussball Arena Munich' => 'Allianz Arena',
+            'Baku Olimpiya Stadionu' => 'Olympic Stadium',
+            'Stadio Olimpico, Rome' => 'Stadio Olimpico',
         ];
 
         return $stadiums[$venue];
