@@ -11,7 +11,9 @@ class Prediction extends Component
 
     public function render()
     {
-        $this->match->matchPrediction->save();
+        if (!$this->match->started) {
+            $this->match->matchPrediction->save();
+        }
 
         return view('livewire.prediction');
     }
