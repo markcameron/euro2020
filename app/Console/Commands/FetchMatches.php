@@ -52,6 +52,7 @@ class FetchMatches extends Command
 
         $matches->where('stage', 'LAST_16')->each($this->insertMatch());
         $matches->where('stage', 'QUARTER_FINAL')->each($this->insertMatch());
+        $matches->where('stage', 'SEMI_FINAL')->each($this->insertMatch());
 
         return 0;
     }
