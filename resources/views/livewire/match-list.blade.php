@@ -12,7 +12,7 @@
             <livewire:match-detail :match="$game" />
         @else
 
-            @if ($todaysMatches)
+            @if ($todaysMatches->isNotEmpty())
                 <div class="mb-6">
                     <div class="mb-2 font-bold font-xl text-white">Today</div>
                     @foreach ($todaysMatches->whereBetween('date', [now()->startOfDay(), now()->endOfDay()]) as $match)
@@ -20,6 +20,11 @@
                     @endforeach
                 </div>
             @endif
+
+            <div class="mt-4 mb-2 font-bold font-xl text-white">Semi Finals</div>
+            @foreach ($matches->where('stage', 'SEMI_FINAL') as $match)
+                <livewire:match-row :match="$match"/>
+            @endforeach
 
             <div class="mt-4 mb-2 font-bold font-xl text-white">Quarter Finals</div>
             @foreach ($matches->where('stage', 'QUARTER_FINAL') as $match)
