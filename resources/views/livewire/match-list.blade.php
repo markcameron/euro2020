@@ -21,6 +21,11 @@
                 </div>
             @endif
 
+            <div class="mt-4 mb-2 font-bold font-xl text-white">Final</div>
+            @foreach ($matches->where('stage', 'FINAL') as $match)
+                <livewire:match-row :match="$match"/>
+            @endforeach
+
             <div class="mt-4 mb-2 font-bold font-xl text-white">Semi Finals</div>
             @foreach ($matches->where('stage', 'SEMI_FINAL') as $match)
                 <livewire:match-row :match="$match"/>
